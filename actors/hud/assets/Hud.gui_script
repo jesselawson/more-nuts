@@ -1,0 +1,149 @@
+go.property("ref_home_tree", msg.url())
+
+function init(self)
+	self.current_nuts_picture = "no_nuts"
+	self.squirrel_face_node = gui.get_node("squirrel_face")
+	self.num_nuts = 0 -- nuts in cheeks
+	self.stored_nuts = 0 -- nuts stored 
+	self.nuts_lost = 0 -- nuts stolen
+	self.stamina = 100
+	self.poop = 0
+
+	gui.set_text(gui.get_node("stored_nuts"), self.stored_nuts)
+	gui.set_text(gui.get_node("lost_nuts"), self.nuts_lost)
+
+	gui.set_color(gui.get_node("fullofnuts"), vmath.vector4(0,0,0,0))
+	gui.set_color(gui.get_node("store_input_helper"), vmath.vector4(0,0,0,0))
+	gui.set_color(gui.get_node("startup_help_card"), vmath.vector4(0,0,0,0))
+	gui.set_color(gui.get_node("startup_help_tip"), vmath.vector4(0,0,0,0))
+	gui.set_color(gui.get_node("nut_mode_overlay"), vmath.vector4(0,0,0,0))
+	gui.set_color(gui.get_node("warning"), vmath.vector4(0,0,0,0))
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	if gui.get_texture(self.squirrel_face_node) ~= "squirrel-face" then
+		gui.set_texture(self.squirrel_face_node, "squirrel-face")
+	end
+
+	if math.floor(self.num_nuts / 5) == 0 and gui.get_flipbook(self.squirrel_face_node) ~= "squirrel-faces1" then 
+		gui.play_flipbook(self.squirrel_face_node, "squirrel-faces1")
+	end
+
+	if math.floor(self.num_nuts / 5) == 1 and gui.get_flipbook(self.squirrel_face_node) ~= "squirrel-faces2" then 
+		gui.play_flipbook(self.squirrel_face_node, "squirrel-faces2")
+	end
+
+	if math.floor(self.num_nuts / 5) == 2 and gui.get_flipbook(self.squirrel_face_node) ~= "squirrel-faces3" then 
+		gui.play_flipbook(self.squirrel_face_node, "squirrel-faces3")
+	end
+
+	if math.floor(self.num_nuts / 5) == 3 and gui.get_flipbook(self.squirrel_face_node) ~= "squirrel-faces4" then 
+		gui.play_flipbook(self.squirrel_face_node, "squirrel-faces4")
+	end
+	if math.floor(self.num_nuts / 5) == 4 and gui.get_flipbook(self.squirrel_face_node) ~= "squirrel-faces5" then 
+		gui.play_flipbook(self.squirrel_face_node, "squirrel-faces5")
+	end
+	if math.floor(self.num_nuts / 5) >= 5 and gui.get_flipbook(self.squirrel_face_node) ~= "squirrel-faces6" then 
+		gui.play_flipbook(self.squirrel_face_node, "squirrel-faces6")
+	end
+
+end
+
+
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("set_nuts_in_mouth") then
+		self.num_nuts = message.num_nuts
+		gui.set_text(gui.get_node("num_nuts_in_mouth"), self.num_nuts)
+	end 
+
+	-- called by protag
+	if message_id == hash("add_stored_nut") then 
+		self.stored_nuts = self.stored_nuts + 1
+		gui.set_text(gui.get_node("stored_nuts"), self.stored_nuts)
+	end
+
+	-- called by bad squirrels
+	if message_id == hash("take_stored_nut") then 
+		if self.stored_nuts > 0 then 
+			self.stored_nuts = self.stored_nuts -1
+			self.nuts_lost = self.nuts_lost + 1
+			gui.set_text(gui.get_node("stored_nuts"), self.stored_nuts)
+			gui.set_text(gui.get_node("lost_nuts"), self.nuts_lost)
+		end
+	end
+
+	if message_id == hash("info_text") then 
+		gui.set_text(gui.get_node("info_text"), message.info_text)
+	end
+
+	if message_id == hash("starting_raid") then 
+		gui.set_color(gui.get_node("warning"), vmath.vector4(1,1,1,1))
+		gui.set_text(gui.get_node("info_text"), "THEY'RE TRYING TO STEAL OUR NUTS! GO MARK YOUR TERRITORY!")
+		timer.delay(3, false, function() gui.set_text(gui.get_node("info_text"), "") end)
+	end
+
+	if message_id == hash("stopping_raid") then 
+		gui.animate(gui.get_node("warning"), gui.PROP_COLOR, vmath.vector4(0, 0, 0, 0), gui.EASING_LINEAR, .5)
+		gui.set_text(gui.get_node("info_text"), "THEY'RE TRYING TO STEAL OUR NUTS! GO MARK YOUR TERRITORY!")
+	end
+
+	if message_id == hash("show_fullofnuts") then 
+		gui.animate(gui.get_node("fullofnuts"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_LINEAR, .5)
+	end
+
+	if message_id == hash("hide_fullofnuts") then 
+		gui.animate(gui.get_node("fullofnuts"), gui.PROP_COLOR, vmath.vector4(0, 0, 0, 0), gui.EASING_LINEAR, .5)
+	end
+
+	if message_id == hash("hide_storeinputhelper") then 
+		gui.animate(gui.get_node("store_input_helper"), gui.PROP_COLOR, vmath.vector4(0, 0, 0, 0), gui.EASING_LINEAR, .1)
+	end
+
+	if message_id == hash("show_storeinputhelper") then 
+		gui.animate(gui.get_node("store_input_helper"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_LINEAR, .1)
+	end
+
+	if message_id == hash("hide_nut_mode_overlay") then 
+		gui.animate(gui.get_node("nut_mode_overlay"), gui.PROP_COLOR, vmath.vector4(0, 0, 0, 0), gui.EASING_LINEAR, .5)
+	end
+
+	if message_id == hash("show_nut_mode_overlay") then 
+		gui.animate(gui.get_node("nut_mode_overlay"), gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_LINEAR, .1)
+	end
+
+	if message_id == hash("show_how_to_play") then
+		gui.set_color(gui.get_node("startup_help_card"), vmath.vector4(1,1,1,1))
+		gui.set_color(gui.get_node("startup_help_tip"), vmath.vector4(1,1,1,1))
+	end
+
+	if message_id == hash("hide_how_to_play") then
+		gui.set_color(gui.get_node("startup_help_card"), vmath.vector4(0,0,0,0))
+		gui.set_color(gui.get_node("startup_help_tip"), vmath.vector4(0,0,0,0))
+	end
+	
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

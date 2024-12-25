@@ -1,0 +1,67 @@
+[bootstrap]
+main_collection = /systems/start.collectionc
+
+[script]
+shared_state = 1
+
+[display]
+width = 960
+height = 640
+high_dpi = 1
+
+[android]
+input_method = HiddenInputField
+package = com.defold.example.basic3d
+
+[project]
+title = More Nuts
+minimum_log_level = 1
+write_log = 1
+publisher = Jelworks Entertainment
+developer = Jesse Lawson
+dependencies#0 = https://github.com/Wolfe2x7/Derez/archive/master.zip
+dependencies#1 = https://github.com/astrochili/defold-illumination/archive/refs/tags/1.0.2.zip
+
+[physics]
+type = 2D
+gravity_y = 0.0
+gravity_z = -10.0
+max_collision_object_count = 24000
+
+[osx]
+bundle_identifier = com.defold.example.basic3d
+
+[ios]
+bundle_identifier = com.defold.example.basic3d
+
+[html5]
+scale_mode = stretch
+
+[model]
+max_count = 1024
+
+[tilemap]
+max_tile_count = 16384
+
+[factory]
+max_count = 512
+
+[graphics]
+default_texture_min_filter = nearest
+default_texture_mag_filter = nearest
+max_debug_vertices = 500000
+
+[sprite]
+subpixels = 0
+max_count = 16000
+
+[label]
+subpixels = 0
+
+[collection]
+max_instances = 32000
+
+[sound]
+max_component_count = 512
+max_sound_data = 512
+

@@ -1,0 +1,9 @@
+image: "/assets/sprites/hud-bg.png"
+tile_width: 960
+tile_height: 128
+collision_groups: "default"
+animations {
+  id: "default"
+  start_tile: 1
+  end_tile: 1
+}

@@ -1,0 +1,33 @@
+
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	print("gameover Loaded")
+	
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("do_gameover") then 
+		msg.post("#gameover", "do_gameover", { stored_nuts = message.stored_nuts })
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("show_help") then 
+		msg.post("start:/go#screen_manager", "play_screen")
+		
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

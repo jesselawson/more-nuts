@@ -1,0 +1,50 @@
+animations {
+  id: "mark_territory_overlay"
+  images {
+    image: "/assets/images/mark_territory_overlay1.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay2.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay3.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay4.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay5.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay6.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay7.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay8.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay9.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+}
+animations {
+  id: "okay"
+  images {
+    image: "/assets/images/mark_territory_overlay10.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay11.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay12.png"
+  }
+  images {
+    image: "/assets/images/mark_territory_overlay13.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+}
+extrude_borders: 2

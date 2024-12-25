@@ -1,0 +1,274 @@
+script: "/actors/hud/assets/Hud.gui_script"
+fonts {
+  name: "font"
+  font: "/assets/fonts/font.font"
+}
+textures {
+  name: "hud"
+  texture: "/actors/hud/assets/hud-bg.atlas"
+}
+textures {
+  name: "squirrel-face"
+  texture: "/actors/hud/assets/squirrel-face.atlas"
+}
+nodes {
+  position {
+    x: 395.0
+    y: 29.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "0"
+  font: "font"
+  id: "num_nuts_in_mouth"
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 353.0
+  }
+  type: TYPE_BOX
+  texture: "squirrel-face/squirrel-faces1"
+  id: "squirrel_face"
+  pivot: PIVOT_S
+  layer: "squirrel_face"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  type: TYPE_BOX
+  texture: "hud/hud-bg"
+  id: "hud_bg"
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_STRETCH
+  layer: "bg"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 953.0
+    y: 455.0
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+  size {
+    x: 400.0
+    y: 100.0
+  }
+  color {
+    x: 0.976
+    y: 0.776
+    z: 0.161
+  }
+  type: TYPE_TEXT
+  font: "font"
+  id: "info_text"
+  pivot: PIVOT_NE
+  line_break: true
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 577.0
+    y: 28.0
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "2245"
+  font: "font"
+  id: "stored_nuts"
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_S
+  layer: "text"
+  inherit_alpha: true
+  text_tracking: 0.15
+}
+nodes {
+  position {
+    x: 576.0
+    y: 64.0
+  }
+  type: TYPE_BOX
+  texture: "hud/nuts_gathered"
+  id: "nuts_gathered"
+  yanchor: YANCHOR_BOTTOM
+  adjust_mode: ADJUST_MODE_STRETCH
+  layer: "squirrel_face"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 833.0
+    y: 28.0
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+    z: 2.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "2245"
+  font: "font"
+  id: "lost_nuts"
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_S
+  layer: "text"
+  inherit_alpha: true
+  text_tracking: 0.15
+}
+nodes {
+  position {
+    x: 832.0
+    y: 64.0
+  }
+  type: TYPE_BOX
+  texture: "hud/nuts_lost"
+  id: "nuts_lost"
+  yanchor: YANCHOR_BOTTOM
+  adjust_mode: ADJUST_MODE_STRETCH
+  layer: "squirrel_face"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 759.0
+    y: 184.0
+  }
+  type: TYPE_BOX
+  texture: "hud/fullofnuts"
+  id: "fullofnuts"
+  xanchor: XANCHOR_RIGHT
+  adjust_mode: ADJUST_MODE_STRETCH
+  layer: "text"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 480.0
+    y: 305.0
+  }
+  type: TYPE_BOX
+  texture: "hud/input-instruction-store"
+  id: "store_input_helper"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 480.0
+    y: 380.0
+  }
+  type: TYPE_BOX
+  texture: "hud/howtoplay"
+  id: "startup_help_card"
+  layer: "squirrel_face"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 202.0
+    y: 194.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "PRESS [H] TO HIDE THIS MESSAGE\t"
+  font: "font"
+  id: "startup_help_tip"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_SW
+  layer: "text"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 480.0
+    y: 320.0
+  }
+  type: TYPE_BOX
+  texture: "hud/nut_mode"
+  id: "nut_mode_overlay"
+  layer: "bg"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 451.0
+    y: 237.0
+  }
+  scale {
+    x: 1.5
+    y: 1.5
+  }
+  type: TYPE_BOX
+  texture: "hud/warning"
+  id: "warning"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NW
+  adjust_mode: ADJUST_MODE_STRETCH
+  layer: "text"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 2.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "hud/calendar"
+  id: "calendar"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_STRETCH
+  layer: "text"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+layers {
+  name: "bg"
+}
+layers {
+  name: "squirrel_face"
+}
+layers {
+  name: "text"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

@@ -1,0 +1,88 @@
+image: "/assets/images/ground.png"
+tile_width: 16
+tile_height: 16
+collision: "/assets/images/ground.png"
+convex_hulls {
+  index: 0
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 4
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 8
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 12
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 16
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 20
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 24
+  count: 4
+  collision_group: "nowalk"
+}
+convex_hulls {
+  index: 28
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 32
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 36
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 40
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 44
+  count: 4
+  collision_group: "ground"
+}
+convex_hulls {
+  index: 48
+  count: 4
+  collision_group: ""
+}
+convex_hulls {
+  index: 52
+  count: 4
+  collision_group: "nowalk"
+}
+collision_groups: "ground"
+collision_groups: "nowalk"
+animations {
+  id: "1"
+  start_tile: 1
+  end_tile: 1
+  fps: 1
+}
+animations {
+  id: "2"
+  start_tile: 2
+  end_tile: 2
+  fps: 1
+}

@@ -1,0 +1,379 @@
+local running_speed = 300
+local sprinting_speed = 550
+local starting_stamina = 100
+local max_nuts_in_mouth = 20
+
+local STORE_NUT_COOLDOWN = 0.1
+local CONTACT_POINT_RESPONSE = hash("contact_point_response")
+
+go.property("direction", vmath.vector3())
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#", "enable")
+	self.dir = vmath.vector3()
+	self.sprinting = false
+
+	self.raid_started = false
+	self.raid_work_done = false 
+	
+	self.nowalk = false
+	self.movement_input = false
+	self.stamina = starting_stamina
+	self.current_anim = nil
+	self.current_speed = running_speed
+	self.can_store_nuts = false -- only true when player is colliding with home_tree nut_storability_radius
+	self.drop_nut_cooling_down = false -- set and controlled via timer to rate-limit nut drop behavior 
+	
+	self.last_ground_tile_changed = {}
+	self.last_ground_tile_changed.x = 0
+	self.last_ground_tile_changed.y = 0
+
+	self.num_nuts_in_mouth = 0
+	self.stored_nuts = 0
+
+	self.state = {}
+	self.state.is_showing_tutorial = false 
+	self.state.is_showing_nut_mode_overlay = false 
+
+	self.sounds = {}
+
+	
+	-- startup vars 
+	self.state.startup = {}
+	self.state.startup.should_show_tutorial = true
+
+	timer.delay(90, false, function() 
+
+		msg.post("start:/go#screen_manager", "game_over", { stored_nuts = self.stored_nuts })
+		
+	end)
+	
+end
+
+
+local function spawn_plus_one(self) 
+
+	local pos = go.get_position()
+	local rot = vmath.quat(0,0,0,0)
+
+	local id = factory.create("#plusonenutfactory", pos, rot, {}, .66)
+	sprite.play_flipbook(id, "plus_one_nut")
+
+	go.animate(id, "position.x", go.PLAYBACK_ONCE_FORWARD, pos.x + 50, go.EASING_INOUTELASTIC, .66)
+	go.animate(id, "position.y", go.PLAYBACK_ONCE_FORWARD, pos.y + 50, go.EASING_INOUTELASTIC, .66)
+	timer.delay(.7, false, function() go.delete(id) end)
+end
+
+local function spawn_home_tree_plus_one(self) 
+
+	local pos = go.get_position()
+	local rot = vmath.quat(0,0,0,0)
+
+	pos.x = pos.x - 150
+	pos.y = pos.y - 50
+
+	local id = factory.create("#plusonenutfactory", pos, rot, {}, 1)
+	sprite.play_flipbook(id, "home_tree_plus_one_nut")
+
+	timer.delay(.7, false, function() go.delete(id) end)
+end
+
+local function add_nut_to_mouth(self)
+	if self.num_nuts_in_mouth < max_nuts_in_mouth then 
+		self.num_nuts_in_mouth = self.num_nuts_in_mouth + 1
+		spawn_plus_one(self)
+	end
+	msg.post("/camera#hud", "set_nuts_in_mouth", { num_nuts = self.num_nuts_in_mouth })
+
+	if self.num_nuts_in_mouth == max_nuts_in_mouth then 
+		msg.post("/camera#hud", "show_fullofnuts", {})
+		msg.post("/camera#hud", "info_text", { info_text = "GO STORE YOUR NUTS!" })
+		timer.delay(5, false, function() 
+			msg.post("/camera#hud", "info_text", { info_text = ""}) 
+			msg.post("/camera#hud", "hide_fullofnuts")
+		end)
+		
+	end
+end
+
+local function sub_nut_from_mouth(self)
+	if self.num_nuts_in_mouth > 0 then 
+		self.num_nuts_in_mouth = self.num_nuts_in_mouth - 1
+		if self.num_nuts_in_mouth == max_nuts_in_mouth then 
+			msg.post("/camera#hud", "hide_fullofnuts", {})
+		end
+	end
+	msg.post("/camera#hud", "set_nuts_in_mouth", { num_nuts = self.num_nuts_in_mouth })
+end
+
+function final(self)
+
+end
+
+function update(self, dt)
+
+	for k,_ in pairs(self.sounds) do
+		self.sounds[k] = self.sounds[k] - dt
+		if self.sounds[k] < 0 then
+			self.sounds[k] = nil
+		end
+	end
+	
+	-- Do startup vars: 
+	if self.state.startup.should_show_tutorial then 
+		self.state.startup.should_show_tutorial = false 
+		self.state.is_showing_tutorial = true 
+		msg.post("/camera#hud", "show_how_to_play", {})
+	end
+
+	-- Updating running/sprinting speed
+	if self.sprinting then 
+		if self.current_speed ~= sprinting_speed then 
+			self.current_speed = sprinting_speed 
+			msg.post("/camera#hud", "show_nut_mode_overlay", {})
+		end
+	else
+		if self.current_speed ~= running_speed then 
+			self.current_speed = running_speed
+			msg.post("/camera#hud", "hide_nut_mode_overlay", {})
+		end
+	end
+
+	if self.raid_started and not self.raid_work_done then 
+		-- self.raid_work_done = true 
+		-- tell tree i_take nut on
+		-- self.take_nut_cooldown
+		-- tell hud to update 
+	end
+
+	-- @todo update stamina based on self.sprinting 
+
+	-- Whether running or idling
+	local anim = hash("idle")
+	if self.dir.x ~= 0 or self.dir.y ~= 0 then
+		if self.movement_input then 
+			anim = hash("running")
+		end
+	end
+
+	if anim ~= self.current_anim then 
+		msg.post("#sprite", "play_animation", {id = anim})
+		self.current_anim = anim
+	end
+	
+	-- Up Down Left Right
+	if self.movement_input then 
+	if self.dir.x > 0 and self.dir.y == 0 then 
+		go.set_rotation(vmath.quat_rotation_z(math.rad(270)))
+		--go.animate(go.get_id(), "rotation", go.PLAYBACK_ONCE_FORWARD, vmath.quat_rotation_z(math.rad(270)), go.EASING_LINEAR, .2)
+	elseif self.dir.x < 0 and self.dir.y == 0 then 
+		go.set_rotation(vmath.quat_rotation_z(math.rad(90)))
+	elseif self.dir.y > 0 and self.dir.x == 0 then 
+		go.set_rotation(vmath.quat_rotation_z(math.rad(0)))
+	elseif self.dir.y < 1 and self.dir.x == 0 then 
+		go.set_rotation(vmath.quat_rotation_z(math.rad(180)))
+	-- UpLeft, UpRight, DownRight, DownLeft
+	-- UpLeft
+	elseif self.dir.x > 0 and self.dir.y > 0 then 
+		go.set_rotation(vmath.quat_rotation_z(math.rad(315)))
+	-- DownLeft
+	elseif self.dir.x > 0 and self.dir.y < 0 then
+		go.set_rotation(vmath.quat_rotation_z(math.rad(225)))
+	-- DownRight
+	elseif self.dir.x < 0 and self.dir.y < 0 then
+		go.set_rotation(vmath.quat_rotation_z(math.rad(135)))
+	-- UpRight
+	elseif self.dir.x < 0 and self.dir.y > 0 then 
+		go.set_rotation(vmath.quat_rotation_z(math.rad(55)))
+	end	
+
+	-- Determine movement direction 
+	if vmath.length_sqr(self.dir) > 1 then 
+		self.dir = vmath.normalize(self.dir)
+	end
+	if self.movement_input and not self.nowalk then 
+		local p = go.get_position()
+		go.set_position(p + self.dir * self.current_speed * dt)
+	end
+end
+
+	self.dir.x = 0
+	self.dir.y = 0
+
+	self.direction = self.dir 
+	
+	self.movement_input = false
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+
+	if message_id == hash("play_nut_sound") then 
+		local snd = "#nutpickup"
+		if self.sounds[snd] == nil then
+			-- Store sound timer in table
+			self.sounds[snd] = .01
+			-- Play the sound
+
+			sound.play(snd, { gain = message.gain})
+
+
+		else
+			-- An attempt to play a sound was gated
+			print("gated ")
+		end
+	end
+
+	if message_id == hash("play_drop_nut_sound") then 
+		local snd = "#nutdrop"
+		if self.sounds[snd] == nil then
+			-- Store sound timer in table
+			self.sounds[snd] = .01
+			-- Play the sound
+
+			sound.play(snd, { gain = message.gain})
+
+
+		else
+			-- An attempt to play a sound was gated
+			print("gated ")
+		end
+	end
+	
+	if message_id == hash("trigger_response") then 
+
+		if message.group == hash("hometree") then 
+
+			if message.enter then 
+				self.can_store_nuts = true
+				msg.post("/camera#hud", "show_storeinputhelper", {})
+			else
+				self.can_store_nuts = false
+				msg.post("/camera#hud", "hide_storeinputhelper", {})
+			end 
+		end
+		
+	end	
+
+	if message_id == hash("collision_response") then
+
+		-- is this a nut?
+		if message.group == hash("nut") then 
+			if self.num_nuts_in_mouth + 1 <= max_nuts_in_mouth then 
+				add_nut_to_mouth(self)
+				msg.post(".", "play_nut_sound", {})
+				go.delete(message.other_id)
+			end
+		end
+		
+		-- Check if we collided with a tile
+		if message.group == hash("ground") then
+			-- compute the tile, and disregard if we already did this one 
+			local pos = go.get_position()
+			local x_tile = math.floor(pos.x / 16)
+			local y_tile = math.floor(pos.y / 16)
+			if self.last_ground_tile_changed.x == x_tile and self.last_ground_tile_changed.y == y_tile then 
+				return
+			end
+			self.last_ground_tile_changed.x = x_tile 
+			self.last_ground_tile_changed.y = y_tile
+			msg.post(message.other_id, "change_tile", {position = pos})
+		end
+
+		if message.group == hash("nowalk") and not self.nowalk then 
+			self.current_speed = 0
+			self.nowalk = true
+			-- @hack | this is to quickly make up for the non-colliding water tiles ;.;
+			-- @todo | replace with regular tile-based collision detection and denial on water tiles 
+			timer.delay(.33, false, function() self.nowalk = false end)
+			msg.post("/camera#hud", "info_text", { info_text = "NO TIME FOR SWIMMING! MUST GATHER NUTS! MORE NUTS!!!" })
+			timer.delay(3, false, function() msg.post("/camera#hud", "info_text", { info_text = "" }) end)
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("show_help") then 
+		if action.pressed and self.state.is_showing_tutorial then 
+			msg.post("/camera#hud", "hide_how_to_play", {})
+			self.state.is_showing_tutorial = false 
+		elseif action.pressed and self.state.is_showing_tutorial == false then 
+			msg.post("/camera#hud", "show_how_to_play", {})
+			self.state.is_showing_tutorial = true 
+		end
+	end
+	
+	if action_id == hash("up") 
+		or action_id == hash("down") 
+		or action_id == hash("left") 
+		or action_id == hash("right") 
+		then 
+		self.movement_input = true
+	else 
+		self.movement_input = false
+	end
+
+	-- Movement 
+	if action_id == hash("up") then self.dir.y = 1
+	elseif action_id == hash("down") then self.dir.y = -1
+	elseif action_id == hash("left") then self.dir.x = -1
+	elseif action_id == hash("right") then self.dir.x = 1
+	end
+
+	-- store nut 
+	if self.can_store_nuts 
+	and action_id == hash("store_nut") 
+	and self.num_nuts_in_mouth > 0 
+	and not self.drop_nut_cooling_down
+	then 
+		sub_nut_from_mouth(self)
+		msg.post(".", "play_drop_nut_sound", {})
+
+		spawn_home_tree_plus_one(self)
+		
+		-- tell hometree 
+		msg.post("/home_tree#home_tree", "here_is_a_nut")
+		self.stored_nuts = self.stored_nuts + 1
+		
+		-- tell ui 
+		msg.post("/camera#hud", "set_nuts_in_mouth", { num_nuts = self.num_nuts_in_mouth })
+		msg.post("/camera#hud", "add_stored_nut", {})
+
+		timer.delay(STORE_NUT_COOLDOWN, false, function() self.drop_nut_cooling_down = false end)
+		self.drop_nut_cooling_down = true 
+	end
+
+	if action_id == hash("starting_raid") then 
+		self.raid_started = true
+	end
+
+	if action_id == hash("stopping_raid") then 
+		self.raid_started = false 
+	end
+
+	
+	-- Sprint 
+	if action_id == hash("sprint") then
+		if action.pressed then 
+			self.sprinting = true
+		elseif action.released then 
+			self.sprinting = false 
+		end
+	end
+
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

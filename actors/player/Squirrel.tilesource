@@ -1,0 +1,74 @@
+image: "/assets/images/squirrel.png"
+tile_width: 32
+tile_height: 32
+collision: "/assets/images/squirrel.png"
+convex_hulls {
+  index: 0
+  count: 13
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 13
+  count: 13
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 26
+  count: 11
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 37
+  count: 14
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 51
+  count: 13
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 64
+  count: 12
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 76
+  count: 14
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 90
+  count: 10
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 100
+  count: 10
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 110
+  count: 14
+  collision_group: "squirrel"
+}
+convex_hulls {
+  index: 124
+  count: 14
+  collision_group: "squirrel"
+}
+collision_groups: "squirrel"
+animations {
+  id: "idle"
+  start_tile: 1
+  end_tile: 6
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 24
+}
+animations {
+  id: "running"
+  start_tile: 7
+  end_tile: 11
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 24
+}

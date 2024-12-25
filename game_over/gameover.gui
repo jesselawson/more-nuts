@@ -1,0 +1,130 @@
+script: "/game_over/gameover.gui_script"
+fonts {
+  name: "font"
+  font: "/assets/fonts/font.font"
+}
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+textures {
+  name: "gameover"
+  texture: "/game_over/gameover.atlas"
+}
+nodes {
+  position {
+    x: 482.0
+    y: 321.0
+  }
+  type: TYPE_BOX
+  texture: "gameover/score_screen-bg"
+  id: "box"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 61.0
+    y: 469.0
+  }
+  scale {
+    x: 3.0
+    y: 3.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "YOU MADE IT TO WINTER WITH\n"
+  "\n"
+  "NUTS"
+  font: "font"
+  id: "text"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 63.0
+    y: 472.0
+  }
+  scale {
+    x: 3.0
+    y: 3.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.302
+    y: 0.0
+    z: 0.102
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "font"
+  id: "num_nuts"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 60.0
+    y: 259.0
+  }
+  scale {
+    x: 1.5
+    y: 1.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "THE PROPHECY OF THE NUT GOD:\n"
+  "Whoever has successfully collected\n"
+  "the highest amount of nuts in this game \n"
+  "shall henceforth be known as\n"
+  "THE NUT GOD"
+  font: "font"
+  id: "text1"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 244.0
+    y: 129.0
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Press [H] to play again"
+  font: "default"
+  id: "text2"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

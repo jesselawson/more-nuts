@@ -1,0 +1,161 @@
+go.property("home_tree", msg.url())
+go.property("player", msg.url())
+
+function init(self)
+	self.is_being_raided = false 
+	self.home_tree_pos = go.get_position(self.home_tree)
+	--pprint(self.home_tree_pos)
+
+	self.timer_ref = {}
+
+	go.set("#sprite", "tint.w", 0)
+
+	self.sounds = {}
+
+	timer.delay(.55, true, function()
+		msg.post("/bad_squirrel_spawner#bad_squirrel_spawner", "play_squirrel_sound", {})
+	end)
+	
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+local function scatter_raiders(self) 
+	timer.cancel(self.timer_ref)
+	
+	-- spawn ten squirrels at home_tree 
+	-- make all of them run away from player
+	-- each one should: timer, 1 second, is player XX away? Yes? Delete. No? Spawn same timer. 
+	msg.post("/player/go#player", "stopping_raid")
+	msg.post("/camera#hud", "stopping_raid")
+
+	sprite.play_flipbook("#sprite", "okay")
+	go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, 3)
+	
+	timer.delay(10, false, function() self.raider_cooldown = false end)
+end
+
+local function spawn_raiders(self) 
+
+	msg.post("/player/go#player", "starting_raid")
+	msg.post("/camera#hud", "starting_raid")
+
+	go.animate("#sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 1)
+	sprite.play_flipbook("#sprite", "mark_territory_overlay")
+	
+	for i = 1, 15 do 
+		local pos = self.home_tree_pos
+		pos.z = .5;
+		local rot = go.get_rotation(self.player)
+		
+		local p = go.get(self.player, "direction")
+		
+		factory.create("#badsquirrelspawner", pos, rot, { player_direction = p}, 1)
+
+	end
+
+	self.timer_ref = timer.delay(1, true, 
+	function() 
+		for i = 1, math.random(1,10) do 
+			msg.post("/camera#hud", "take_stored_nut", {})
+		end
+	end)
+	
+	self.raider_cooldown = true
+end
+
+function update(self, dt)
+	for k,_ in pairs(self.sounds) do
+		self.sounds[k] = self.sounds[k] - dt
+		if self.sounds[k] < 0 then
+			self.sounds[k] = nil
+		end
+	end
+
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("play_squirrel_sound") then
+		local r = math.random(1,13)
+		local snd = ""
+		if r == 1 then snd = "#1" 
+			elseif r == 2 then snd = "#2"
+		elseif r == 3 then snd = "#3"
+		elseif r == 4 then snd = "#4"
+		elseif r == 5 then snd = "#5"
+		elseif r == 6 then snd = "#6"
+		elseif r == 7 then snd = "#7"
+		elseif r == 8 then snd = "#8"
+		elseif r == 9 then snd = "#9"
+		elseif r == 10 then snd = "#10"
+		elseif r == 11 then snd = "#11"
+		elseif r == 12 then snd = "#12"
+		elseif r == 13 then snd = "#13"
+		end
+		-- Only play sounds that are not currently in the gating table.
+		if self.sounds[snd] == nil then
+			-- Store sound timer in table
+			self.sounds[snd] = .5
+			-- Play the sound
+
+			sound.play(snd, { gain = message.gain,  pan = math.random(-1,1)*math.random()})
+			
+			
+		else
+			-- An attempt to play a sound was gated
+			print("gated ")
+		end
+	end
+
+
+	if message_id == hash("trigger_response") then
+		if message.enter then
+			if self.is_being_raided then 
+				self.is_being_raided = false 
+				--print("scattering")
+				scatter_raiders(self)
+			end
+		else
+			if not self.is_being_raided and not self.raider_cooldown then 
+				-- only spawn if there are nuts and if they're far away 
+				local distance = vmath.length(go.get_position(self.home_tree) - go.get_position(self.player))
+				pprint(distance)
+				if distance > 50 then 
+					spawn_raiders(self)
+					self.is_being_raided = true
+				end
+			end
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

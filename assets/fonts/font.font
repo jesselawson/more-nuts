@@ -1,0 +1,5 @@
+font: "/assets/PixelifySans-Regular.ttf"
+material: "/builtins/fonts/font.material"
+size: 18
+antialias: 0
+characters: " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

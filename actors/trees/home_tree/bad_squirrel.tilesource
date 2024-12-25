@@ -1,0 +1,69 @@
+image: "/assets/images/bad-squirrel.png"
+tile_width: 32
+tile_height: 32
+collision: "/assets/images/bad-squirrel.png"
+convex_hulls {
+  index: 0
+  count: 13
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 13
+  count: 13
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 26
+  count: 11
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 37
+  count: 14
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 51
+  count: 13
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 64
+  count: 12
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 76
+  count: 14
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 90
+  count: 10
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 100
+  count: 10
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 110
+  count: 14
+  collision_group: "bad_squirrel"
+}
+convex_hulls {
+  index: 124
+  count: 14
+  collision_group: "bad_squirrel"
+}
+collision_groups: "bad_squirrel"
+animations {
+  id: "running"
+  start_tile: 7
+  end_tile: 11
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 11
+}
+extrude_borders: 2
+sprite_trim_mode: SPRITE_TRIM_MODE_4

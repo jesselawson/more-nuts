@@ -1,0 +1,168 @@
+name: "main"
+instances {
+  id: "illumination"
+  prototype: "/illumination/illumination.go"
+  component_properties {
+    id: "illumination"
+    properties {
+      id: "sunlight_brightness"
+      value: "0.5"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "sunlight_specular"
+      value: "0.1"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "fog"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "fog_is_radial"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+}
+instances {
+  id: "tree_spawner"
+  prototype: "/actors/trees/tree_spawner/tree_spawner.go"
+}
+instances {
+  id: "home_tree"
+  prototype: "/actors/trees/home_tree/home_tree.go"
+  position {
+    x: 979.0
+    y: 961.0
+    z: -139.0
+  }
+  scale3 {
+    x: 20.0
+    y: 20.0
+    z: 20.0
+  }
+}
+instances {
+  id: "bad_squirrel_spawner"
+  prototype: "/actors/trees/home_tree/bad_squirrel_spawner.go"
+  position {
+    x: 932.0
+    y: 949.0
+  }
+  component_properties {
+    id: "bad_squirrel_spawner"
+    properties {
+      id: "home_tree"
+      value: "/home_tree#home_tree"
+      type: PROPERTY_TYPE_URL
+    }
+    properties {
+      id: "player"
+      value: "/player/go#player"
+      type: PROPERTY_TYPE_URL
+    }
+  }
+}
+collection_instances {
+  id: "player"
+  collection: "/actors/player/player.collection"
+  position {
+    x: 1000.0
+    y: 1000.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "ground"
+  collection: "/actors/ground/ground.collection"
+}
+scale_along_z: 1
+embedded_instances {
+  id: "main"
+  data: "components {\n"
+  "  id: \"play_screen\"\n"
+  "  component: \"/play_screen/play.script\"\n"
+  "}\n"
+  ""
+  scale3 {
+    x: 2.561725
+    y: 2.983056
+  }
+}
+embedded_instances {
+  id: "treespawner"
+  children: "tree_spawner"
+  data: ""
+  position {
+    z: -1.0
+  }
+  scale3 {
+    x: 3.0
+    y: 3.0
+    z: 3.0
+  }
+}
+embedded_instances {
+  id: "lights"
+  children: "illumination"
+  data: ""
+  scale3 {
+    z: 0.1
+  }
+}
+embedded_instances {
+  id: "console"
+  data: ""
+}
+embedded_instances {
+  id: "camera"
+  data: "components {\n"
+  "  id: \"CameraController\"\n"
+  "  component: \"/actors/camera/CameraController.script\"\n"
+  "  properties {\n"
+  "    id: \"player_gameobject\"\n"
+  "    value: \"/player/go\"\n"
+  "    type: PROPERTY_TYPE_URL\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"hud\"\n"
+  "  component: \"/actors/hud/hud.gui\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"camera\"\n"
+  "  type: \"camera\"\n"
+  "  data: \"aspect_ratio: 1.0\\n"
+  "fov: 1.0\\n"
+  "near_z: 0.1\\n"
+  "far_z: 1000.0\\n"
+  "auto_aspect_ratio: 1\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    z: 400.0
+  }
+}
+embedded_instances {
+  id: "choob"
+  data: "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"default\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/actors/choob/choob.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 2067.0\n"
+  "    y: -501.0\n"
+  "    z: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+}

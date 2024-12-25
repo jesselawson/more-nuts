@@ -1,0 +1,806 @@
+images {
+  image: "/assets/sprites/hud-bg.png"
+}
+images {
+  image: "/assets/images/nuts_gathered.png"
+}
+images {
+  image: "/assets/images/nuts_lost.png"
+}
+images {
+  image: "/assets/images/fullofnuts.png"
+}
+images {
+  image: "/assets/images/howtoplay.png"
+}
+images {
+  image: "/assets/images/input-instruction-store.png"
+}
+animations {
+  id: "nut_mode"
+  images {
+    image: "/assets/images/tanjiro-mode1.png"
+  }
+  images {
+    image: "/assets/images/tanjiro-mode2.png"
+  }
+  images {
+    image: "/assets/images/tanjiro-mode3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+animations {
+  id: "calendar"
+  images {
+    image: "/assets/images/calendar/calendar1.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar2.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar3.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar4.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar5.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar6.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar7.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar8.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar9.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar10.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar11.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar12.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar13.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar14.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar15.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar16.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar17.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar18.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar19.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar20.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar21.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar22.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar23.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar24.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar25.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar26.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar27.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar28.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar29.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar30.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar31.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar32.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar33.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar34.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar35.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar36.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar37.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar38.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar39.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar40.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar41.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar42.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar43.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar44.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar45.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar46.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar47.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar48.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar49.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar50.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar51.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar52.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar53.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar54.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar55.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar56.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar57.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar58.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar59.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar60.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar61.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar62.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar63.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar64.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar65.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar66.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar67.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar68.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar69.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar70.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar71.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar72.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar73.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar74.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar75.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar76.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar77.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar78.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar79.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar80.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar81.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar82.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar83.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar84.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar85.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar86.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar87.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar88.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar89.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar90.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar91.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar92.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar93.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar94.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar95.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar96.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar97.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar98.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar99.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar100.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar101.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar102.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar103.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar104.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar105.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar106.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar107.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar108.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar109.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar110.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar111.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar112.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar113.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar114.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar115.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar116.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar117.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar118.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar119.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar120.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar121.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar122.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar123.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar124.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar125.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar126.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar127.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar128.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar129.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar130.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar131.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar132.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar133.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar134.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar135.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar136.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar137.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar138.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar139.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar140.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar141.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar142.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar143.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar144.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar145.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar146.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar147.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar148.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar149.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar150.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar151.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar152.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar153.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar154.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar155.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar156.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar157.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar158.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar159.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar160.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar161.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar162.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar163.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar164.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar165.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar166.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar167.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar168.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar169.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar170.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar171.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar172.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar173.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar174.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar175.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar176.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar177.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar178.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar179.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar180.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar181.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar182.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar183.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar184.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar185.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar186.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar187.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar188.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar189.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar190.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar191.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar192.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar193.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar194.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar195.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar196.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar197.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar198.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar199.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar200.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar201.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar202.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar203.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar204.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar205.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar206.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar207.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar208.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar209.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar210.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar211.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar212.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar213.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar214.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar215.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar216.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar217.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar218.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar219.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar220.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar221.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar222.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar223.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar224.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar225.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar226.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar227.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar228.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar229.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar230.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar231.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar232.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar233.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar234.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar235.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar236.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar237.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar238.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar239.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar240.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar241.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar242.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar243.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar244.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar245.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar246.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar247.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar248.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar249.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar250.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar251.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar252.png"
+  }
+  images {
+    image: "/assets/images/calendar/calendar253.png"
+  }
+  fps: 3
+}
+animations {
+  id: "warning"
+  images {
+    image: "/assets/images/warning1.png"
+  }
+  images {
+    image: "/assets/images/warning2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 1
+}
+extrude_borders: 2

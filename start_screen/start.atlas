@@ -1,0 +1,22 @@
+animations {
+  id: "default"
+  images {
+    image: "/assets/images/start_screen-bg.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+animations {
+  id: "quit"
+  images {
+    image: "/assets/images/input-instruction-quit.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+animations {
+  id: "play"
+  images {
+    image: "/assets/images/input-instruction-play.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+extrude_borders: 2

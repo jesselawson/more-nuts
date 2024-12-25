@@ -1,0 +1,11 @@
+default_animation: "idle"
+material: "/builtins/materials/sprite.material"
+size {
+  x: 32.0
+  y: 32.0
+}
+size_mode: SIZE_MODE_MANUAL
+textures {
+  sampler: "texture_sampler"
+  texture: "/actors/player/Squirrel.tilesource"
+}

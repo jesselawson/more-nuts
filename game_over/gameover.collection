@@ -1,0 +1,6 @@
+name: "gameover"
+instances {
+  id: "gui"
+  prototype: "/game_over/gameover.go"
+}
+scale_along_z: 0

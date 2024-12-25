@@ -1,0 +1,19 @@
+images {
+  image: "/assets/sprites/squirrel-faces1.png"
+}
+images {
+  image: "/assets/sprites/squirrel-faces2.png"
+}
+images {
+  image: "/assets/sprites/squirrel-faces3.png"
+}
+images {
+  image: "/assets/sprites/squirrel-faces4.png"
+}
+images {
+  image: "/assets/sprites/squirrel-faces5.png"
+}
+images {
+  image: "/assets/sprites/squirrel-faces6.png"
+}
+extrude_borders: 2

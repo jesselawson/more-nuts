@@ -1,0 +1,44 @@
+animations {
+  id: "plus_one_nut"
+  images {
+    image: "/assets/images/plus-one-nut1.png"
+  }
+  images {
+    image: "/assets/images/plus-one-nut2.png"
+  }
+  images {
+    image: "/assets/images/plus-one-nut3.png"
+  }
+  images {
+    image: "/assets/images/plus-one-nut4.png"
+  }
+  images {
+    image: "/assets/images/plus-one-nut5.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 11
+}
+animations {
+  id: "home_tree_plus_one_nut"
+  images {
+    image: "/assets/images/home_tree_plu_one_nut1.png"
+  }
+  images {
+    image: "/assets/images/home_tree_plu_one_nut2.png"
+  }
+  images {
+    image: "/assets/images/home_tree_plu_one_nut3.png"
+  }
+  images {
+    image: "/assets/images/home_tree_plu_one_nut4.png"
+  }
+  images {
+    image: "/assets/images/home-tree-plus-one-nut5.png"
+  }
+  images {
+    image: "/assets/images/home-tree-plus-one-nut6.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 11
+}
+extrude_borders: 2

@@ -1,0 +1,68 @@
+fonts {
+  name: "font"
+  font: "/assets/fonts/font.font"
+}
+textures {
+  name: "start"
+  texture: "/start_screen/start.atlas"
+}
+nodes {
+  position {
+    x: 480.0
+    y: 320.0
+  }
+  type: TYPE_BOX
+  texture: "start/default"
+  id: "bg"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 180.0
+    y: 275.0
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "start/play"
+  id: "box"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 180.0
+    y: 163.0
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "start/quit"
+  id: "box1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 454.0
+    y: 222.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "After pressing [E], \n"
+  "use the ARROW KEYS\n"
+  "to play :D"
+  font: "font"
+  id: "text"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

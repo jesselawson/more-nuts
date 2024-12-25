@@ -1,0 +1,15 @@
+image: "/assets/sprites/nut.png"
+tile_width: 8
+tile_height: 8
+collision: "/assets/sprites/nut-collision.png"
+convex_hulls {
+  index: 0
+  count: 8
+  collision_group: ""
+}
+collision_groups: "nut"
+animations {
+  id: "anim"
+  start_tile: 1
+  end_tile: 1
+}

@@ -1,0 +1,27 @@
+animations {
+  id: "default"
+  images {
+    image: "/assets/images/choob1.png"
+  }
+  images {
+    image: "/assets/images/choob2.png"
+  }
+  images {
+    image: "/assets/images/choob3.png"
+  }
+  images {
+    image: "/assets/images/choob4.png"
+  }
+  images {
+    image: "/assets/images/choob5.png"
+  }
+  images {
+    image: "/assets/images/choob6.png"
+  }
+  images {
+    image: "/assets/images/choob7.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 1
+}
+extrude_borders: 2

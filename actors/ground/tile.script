@@ -1,0 +1,82 @@
+
+
+local function get_starting_tile()
+	-- 1: 1,2,7,8
+	-- 2: 3,4,9,10
+	-- 3: 5,6,11,12
+	local n = math.random(1,8)	
+
+	if n == 1 then return 1
+		elseif n == 2 then return 2
+		elseif n==3 then return 8
+		elseif n==4 then return 9
+		elseif n == 5 then return 3
+		elseif n == 6 then return 4
+		elseif n == 7 then return 9
+		elseif n == 8 then return 10
+	end
+end
+
+local function get_next_tile(self,x,y)
+	local n = self.tiles[y][x]
+	if n == nil then return 1 end
+	if n == 1 then return 3 
+	elseif n == 2 then return 4
+	elseif n == 7 then return 9
+	elseif n == 8 then return 10
+	elseif n == 3 then return 5
+	elseif n == 4 then return 6
+	elseif n == 9 then return 11
+	elseif n == 10 then return 12
+	elseif n == 11 then return 13
+	else return n
+	end
+end
+
+-- Given tile(x,y) coords, will increment to next associated texture:
+local function seasonally_change_tile(self, x, y) 
+	local a = self.tiles[y][x]
+	-- keep starting plain grass the same
+	if (a == 1) or (a==2) or (a==8) or (a==9) or (a==10) or (a==12) then 
+		return
+	end
+	
+	local next = get_next_tile(self,x,y)
+
+	self.tiles[y][x] = next
+
+	-- spawn the flower at some random time (0-1 + 0-1) seconds later: 
+	timer.delay(math.random()+math.random(), false, function() tilemap.set_tile("#ground", "layer1", x, y, next) end)
+	
+
+end
+	
+	
+
+function init(self)
+	msg.post("#", "enable")
+
+	self.tiles = {}
+	for y=1,100 do
+		self.tiles[y] = {}
+		for x=1,100 do
+			local tileIndex = get_starting_tile()
+			self.tiles[y][x] = tileIndex
+			
+			tilemap.set_tile("#ground", "layer1", x, y, tileIndex)
+		end
+	end
+	
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("change_tile") then
+		-- Convert world position to tile coordinates
+		-- Each tile is 16x16, 100 tiles each direction
+		local x_tile = math.floor( (message.position.x + 16) / 16)
+		local y_tile = math.floor( (message.position.y + 16) / 16)
+		
+		-- Change the tile
+		seasonally_change_tile(self, x_tile, y_tile)
+	end
+end

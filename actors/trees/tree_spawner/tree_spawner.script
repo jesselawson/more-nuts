@@ -1,0 +1,35 @@
+-- spawns trees and nuts around trees 
+local function spawn_random_trees(factory_url, count, radius)
+	for i = 1, count do
+		local x = math.random(-radius, radius)
+		local y = math.random(-radius, radius)
+		local z = -115.0
+		local pos = vmath.vector3(x, y, z)
+
+		-- Optional: Add random rotation
+		local rot = vmath.quat_rotation_z(math.rad(math.random() * 2 * math.pi))
+		local rand = math.random(40,80)
+		local scale = vmath.vector3(rand,rand,rand)
+		
+		-- Spawn tree: 
+		factory.create(factory_url, pos, rot, {}, scale)
+
+		-- Spawn nuts around tree:
+		for j = 1, math.random(50) do 
+			local nut_pos = pos 
+			nut_pos.x = nut_pos.x + math.random(-50,50)
+			nut_pos.y = nut_pos.y + math.random(-50,50)
+			nut_pos.z = 0.5
+			local nut_rot = vmath.quat_rotation_z(math.rad(math.random(0,359)))
+			factory.create("#nutfactory", nut_pos, nut_rot, {}, 1)
+		end
+	end
+end
+
+
+function init(self)
+	-- Pick 100 random spots around where player is and spawn a tree
+	local SPAWN_RADIUS = 5000  -- Adjust this value to control how far trees can spawn
+	spawn_random_trees("#treefactory", 500, SPAWN_RADIUS)
+
+end

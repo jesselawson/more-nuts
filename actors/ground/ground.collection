@@ -1,0 +1,30 @@
+name: "ground"
+scale_along_z: 0
+embedded_instances {
+  id: "go"
+  data: "components {\n"
+  "  id: \"ground\"\n"
+  "  component: \"/actors/ground/ground.tilemap\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"tile\"\n"
+  "  component: \"/actors/ground/tile.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"collider\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"/actors/ground/ground.tilemap\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_STATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"ground\\\"\\n"
+  "mask: \\\"player\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "go1"
+  data: ""
+}

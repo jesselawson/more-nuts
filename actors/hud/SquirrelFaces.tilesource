@@ -1,0 +1,34 @@
+image: "/assets/sprites/squirrel-faces.png"
+tile_width: 128
+tile_height: 128
+collision_groups: "default"
+animations {
+  id: "five_nuts"
+  start_tile: 6
+  end_tile: 6
+}
+animations {
+  id: "four_nuts"
+  start_tile: 5
+  end_tile: 5
+}
+animations {
+  id: "no_nuts"
+  start_tile: 1
+  end_tile: 1
+}
+animations {
+  id: "one_nut"
+  start_tile: 2
+  end_tile: 2
+}
+animations {
+  id: "three_nuts"
+  start_tile: 4
+  end_tile: 4
+}
+animations {
+  id: "two_nuts"
+  start_tile: 3
+  end_tile: 3
+}
