@@ -1,17 +1,37 @@
-# Welcome to Defold
+# More Nuts
 
-This project was created from the "basic 3D" project template.
+A top-down, 2D game where you play a squirrel trying to gather as much nuts 
+as possible before winter. Made (but not completed in time) for [Mini Jam 174](https://github.com/jesselawson/more-nuts). 
 
-The settings in ["game.project"](defold://open?path=/game.project) are mostly set to the default values. The render script is a modified version of the default render script with the addition that models are rendered in a separate pass before 2D components such as sprites and tilemaps. The physics type is set to 3D and not 2D.
+The theme was "Defense" and the condition was "only one resource."
 
-The project contains a bootstrap ["main.collection"](defold://open?path=/main/main.collection) that includes a game object with a camera component and a game object with three different models.
+## Screenshots
 
-Check out [the documentation pages](https://defold.com/learn) for examples, tutorials, manuals and API docs.
+![screenshot](screenshots/one.png)
 
-If you run into trouble, help is available in [our forum](https://forum.defold.com).
+![screenshot](screenshots/two.png)
 
-Happy Defolding!
+![screenshot](screenshots/three.png)
 
-## Credits
+## How to play
 
-* Textures by Kenney (https://www.kenney.nl)
+Use the arrow keys to collect nuts, then head back to your home tree and deposit them for the winter. 
+Other squirrels will try to steal your nuts, so you'll have to go back and run around your home tree 
+to ward them off. 
+
+## What's in the repo
+
+- All of the Lua code I wrote to quickly scaffold this game
+- A fully working game with a start screen, play screen, and scoring screen 
+- All assets were created by me in Aseprite except for the tree meshes
+- Sounds were done in-house except for a few that were random ones I found
+in my sounds folder
+
+## For educational purposes only
+
+You're free to use this code for educational purposes, but this code is not for 
+production use nor is it meant to be illustrative of production-ready code. This 
+codebase is for a game that was intentionally built as fast as possible, so while 
+the game is functional, the codebase requires significant refactoring because
+there were many decisions made under time pressure.
+

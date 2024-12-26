@@ -3,15 +3,14 @@ INFO:ENGINE: Loading data from: build/default
 INFO:SOUND: Mix format:
 INFO:SOUND:   wFormatTag:       fffe  IEEE_FLOAT/PCM/EXTENSIBLE: 3 / 1 / fffe
 INFO:SOUND:   nChannels:        2
-INFO:SOUND:   nSamplesPerSec:   48000
-INFO:SOUND:   nAvgBytesPerSec:  384000
+INFO:SOUND:   nSamplesPerSec:   44100
+INFO:SOUND:   nAvgBytesPerSec:  352800
 INFO:SOUND:   nBlockAlign:      8
 INFO:SOUND:   wBitsPerSample:   32
 INFO:SOUND:   -> Format:        3  IEEE_FLOAT/PCM/EXTENSIBLE: 3 / 1 / fffe
 INFO:ENGINE: Initialised sound device 'default'
 DEBUG:SCRIPT: Listening for debugger on 0.0.0.0
 DEBUG:SCRIPT: Debugger connected from 127.0.0.1
-INFO:DLIB: SSDP: Started on address 172.17.160.1
 INFO:DLIB: SSDP: Started on address 192.168.0.24
 DEBUG:SCRIPT: proxy loaded (sender: [start:/go#start_screen]
 DEBUG:SCRIPT: url: [start:/go#game_over]
@@ -22,12 +21,28 @@ DEBUG:SCRIPT: Unloaded	url: [start:/go#start_screen]
 DEBUG:SCRIPT: proxy loaded (sender: [start:/go#play_screen]
 DEBUG:SCRIPT: url: [start:/go#game_over]
 DEBUG:SCRIPT: url: [start:/go#play_screen]
-DEBUG:SCRIPT: 169.56246948242
+DEBUG:SCRIPT: 167.99468994141
+DEBUG:SCRIPT: gated 
+DEBUG:SCRIPT: 177.58383178711
+DEBUG:SCRIPT: gated 
+DEBUG:SCRIPT: 182.1856842041
 DEBUG:SCRIPT: gated 
 DEBUG:SCRIPT: gated 
 DEBUG:SCRIPT: gated 
+DEBUG:SCRIPT: 176.78929138184
 DEBUG:SCRIPT: gated 
-DEBUG:SCRIPT: 143.96194458008
 DEBUG:SCRIPT: gated 
-INFO:DLIB: SSDP: Done on address 172.17.160.1
+DEBUG:SCRIPT: Unloaded	url: [start:/go#play_screen]
+DEBUG:SCRIPT: proxy loaded (sender: [start:/go#game_over]
+DEBUG:SCRIPT: url: [start:/go#game_over]
+DEBUG:SCRIPT: url: [start:/go#game_over]
+DEBUG:SCRIPT: gameover Loaded
+DEBUG:SCRIPT: 
+{ --[[000001BBDB457BB0]]
+  stored_nuts = 86
+}
+DEBUG:SCRIPT: Unloaded	url: [start:/go#game_over]
+DEBUG:SCRIPT: proxy loaded (sender: [start:/go#play_screen]
+DEBUG:SCRIPT: url: [start:/go#game_over]
+DEBUG:SCRIPT: url: [start:/go#play_screen]
 INFO:DLIB: SSDP: Done on address 192.168.0.24
